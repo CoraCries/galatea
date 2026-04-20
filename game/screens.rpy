@@ -1708,5 +1708,6 @@ screen inventory_screen():
                 text "Close":
                     color "#cc6600"
                     hover_color "#e0a366"
+                action Hide("inventory_screen")
                 
                     
