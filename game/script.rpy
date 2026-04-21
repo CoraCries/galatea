@@ -155,7 +155,7 @@ label altar:
         "Pray to Aphrodite?"
 
         "Yes":
-            n "Pygmalion bows and offers a heartfelt prayer to Aphrodite."
+            n "Pygmalion bows his head and offers a heartfelt prayer to Aphrodite."
             n "He can't explain it, but he feels every word of his heard."
             $ pray = True
 
