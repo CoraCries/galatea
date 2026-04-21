@@ -62,9 +62,11 @@ label open_inventory:
     call screen inventory_screen
     $ selected_item = _return
 
-    if selected_item:
+    if selected_item is None or selected_item == "":
+        pass
+    else:
         "You look at the [selected_item]."
-    
+
     return
 
 #room 1
