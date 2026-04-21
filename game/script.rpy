@@ -21,6 +21,8 @@ image bg temple = ("images/bgtemple.png")
 
 #inventory
 default inventory = []
+default selected_item = None
+default inventory_open = False
 
 #inventory functions
 init python:
@@ -59,12 +61,11 @@ label start:
 
 label open_inventory:
 
-    call screen inventory_screen
+    $ selected_item = None
+    show screen inventory_screen
     $ selected_item = _return
 
-    if selected_item is None or selected_item == "":
-        pass
-    else:
+    if selected_item in inventory:
         "You look at the [selected_item]."
 
     return
@@ -77,18 +78,22 @@ label galatea1:
     p "Her name is Galatea."
     n "Pygamalion's palm touches her out stretched hand. The ivory marble of her skin is cold as ever."
     n "He holds it gently, before releasing it and looking around the room." 
+    return
 
 label vanity: 
     p "Motar and pestle for grinding pigment, I bought the vanity and make up for Galatea..."
     n "Sometimes he imagines her happily recieving them."
+    return
 
 label marble: 
     n "A block of raw marble."
     p "I haven't been able to sculpt anything after her, I could never surpass her perfection."
+    return
 
 label flowers:
     n "The roses are blooming beautifully."
     p "I thought she might like them, and when they dry I'll grind them into a paste and cook them so that she may have jewelry as lovely as her."
+    return
 
 #Festival
 

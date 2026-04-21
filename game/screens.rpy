@@ -1655,7 +1655,10 @@ screen room():
 
 #inventory screen
 screen inventory_screen():
-    tag menu
+
+    modal True
+    zorder 100
+
     frame:
         xalign 0.5
         yalign 0.5
@@ -1703,11 +1706,9 @@ screen inventory_screen():
                 xalign 0.5
 
 
-            button:
-                xalign 0.5
-                text "Close":
-                    color "#cc6600"
-                    hover_color "#e0a366"
-                action Return("")
+            textbutton "Close":
+                action Hide("inventory_screen")
+                text_color "#cc6600"
+                text_hover_color "#e0a366"
                 
                     
