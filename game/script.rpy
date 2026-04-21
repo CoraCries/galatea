@@ -13,6 +13,11 @@ default give_gift = False
 default pray = False
 default steal = False
 
+#Other variables
+default festival_seen = False
+default temple_seen = False
+default flowers_seen = False
+
 #images
 
 image bg room = ("images/bgroom.png")
@@ -44,8 +49,9 @@ label galatea1:
     jump go_room1
 
 label vanity: 
-    p "Motar and pestle for grinding pigment, I bought the vanity and make up for Galatea..."
+    p "Mortar and pestle for grinding pigment, and I bought the vanity and make up for Galatea..."
     n "Sometimes he imagines her happily recieving them."
+    p "...A foolish thought."
     
     jump go_room1
 
@@ -57,16 +63,26 @@ label marble:
 
 label flowers:
     n "The roses are blooming beautifully."
-    p "I thought she might like them, and when they dry I'll grind them into a paste and cook them so that she may have jewelry as lovely as her."
-    menu:
-        "Take a flower?"
+    if not inventory.has_item("Rose"):
+        if not flowers_seen:
+            p "I thought she might like them."
+            p "When they dry I'll grind them into a paste and cook them so that she may have jewelry as lovely as her."
+            $ flowers_seen = True
+        menu:
+            "Take a flower?"
 
-        "Yes":
-            python:
-                inventory.add_item("Rose", quantity=1)
-            #flavor text
-        "No":
-            #flavor text
+            "Yes":
+                n "Pygmalion regards the roses with a thoughtful look."
+                p "They're not mine to take but..."
+                n "He delicately picks one up."
+                p "I'm sure she would offer one to the goddess."
+                python:
+                    inventory.add_item("Rose", quantity=1)
+                n "Pygmalion takes the rose with him."
+
+            "No":
+                n "Pygmalion shakes his head."
+                p "These are for her, after all."
     
     jump go_room1
 
@@ -75,6 +91,11 @@ label flowers:
 label go_festival:
 
     scene bg festival
+
+    if not festival_seen:
+        n "The festival is already in full swing."
+        $ festival_seen = True
+    
     call screen festival
 
 label crowd:
@@ -93,13 +114,14 @@ label apple_tree:
     jump go_festival
 
 label beach:
-    #text about going to beach
-    p "Oh? What's this?"
-    n "Half buried in the sane, there is a luster that catches in the light of Apollo's sun."
-    p "How beautiful. Perhaps the goddess will be pleased with this."
-    python:
-        inventory.add_item("Shell", quantity=1)
-    "Shell added to Pygmalion's inventory."
+    n "Pygmalion strolls along the beach."
+    if not inventory.has_item("Shell"):
+        p "Oh? What's this?"
+        n "Half buried in the sane, there is a luster that catches in the light of Apollo's sun."
+        p "How beautiful. Perhaps the goddess will be pleased with this."
+        python:
+            inventory.add_item("Shell", quantity=1)
+        n "Pygmalion pockets the shell."
     
     jump go_festival
 
@@ -111,6 +133,11 @@ label home:
 label go_temple:
 
     scene bg temple
+
+    if not temple_seen:
+        n "The temple is already filled with different offerings for Aphrodite."
+        $ temple_seen = True
+
     call screen temple
 
 label aphrodite_statue:
@@ -128,11 +155,12 @@ label altar:
         "Pray to Aphrodite?"
 
         "Yes":
+            n "Pygmalion bows and offers a heartfelt prayer to Aphrodite."
+            n "He can't explain it, but he feels every word of his heard."
             $ pray = True
-            #flavor text
 
         "No":
-            #flavor text
+            n "Pygmalion walks away from the altar without offering his prayers."
     
     jump go_temple
 
