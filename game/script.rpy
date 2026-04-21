@@ -19,6 +19,9 @@ image bg room = ("images/bgroom.png")
 image bg festival = ("images/bgfestival.png")
 image bg temple = ("images/bgtemple.png")
 
+#inventory
+default inventory = Inventory(slot_count=4, unlocked_slots=4)
+
 # The game starts here.
 
 label start:
