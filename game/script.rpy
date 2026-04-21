@@ -59,7 +59,8 @@ label flowers:
         "Take a flower?"
 
         "Yes":
-            inventory.add_item("Rose", quantity=1)
+            python:
+                inventory.add_item("Rose", quantity=1)
             #flavor text
         "No":
             #flavor text
