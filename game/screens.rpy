@@ -1633,17 +1633,10 @@ style slider_slider:
 
 ### CUSTOM SCREENS FOR POINT AND CLICK###
 
-# Reusable inventory button
-screen inventory_button():
-    textbutton "Inventory":
-        xpos 20
-        ypos 20
-        action Call("open_inventory")
-
 #room 1 screen
 screen room():
-    use inventory_button
     #Galatea
+    use HUD
     imagebutton:
         xanchor 0.5
         yanchor 0.5
@@ -1652,63 +1645,3 @@ screen room():
         idle "images/galatea1.png"
         hover "images/galatea2.png"
         action Jump ("galatea1")
-
-#inventory screen
-screen inventory_screen():
-
-    modal True
-    zorder 100
-
-    frame:
-        xalign 0.5
-        yalign 0.5
-        xsize 900
-        ysize 550
-        background "#0a0a0aee"
-        padding (30, 30)
-
-        vbox:
-            spacing 25
-
-            text "INVENTORY" size 36 color "#cc6600" xalign 0.5
-
-            frame:
-                xsize 800
-                ysize 2
-                background "#444444"
-                xalign 0.5
-
-            if len(inventory) == 0:
-                text "No items" color "#888888" xalign 0.5
-            else:
-                grid 4 3 spacing 20:
-
-                    for item in inventory:
-                        button:
-                            xsize 180
-                            ysize 70
-                            background "#1a1a1a"
-                            hover_background "#2a2a2a"
-                            action Return(item)
-
-                            text "[item]" color "#dddddd" xalign 0.5 yalign 0.5
-
-                    for i in range(12 - len(inventory)):
-                        frame:
-                            xsize 180
-                            ysize 70
-                            background "#111111"
-
-            frame:
-                xsize 800
-                ysize 2
-                background "#444444"
-                xalign 0.5
-
-
-            textbutton "Close":
-                action Hide("inventory_screen")
-                text_color "#cc6600"
-                text_hover_color "#e0a366"
-                
-                    
