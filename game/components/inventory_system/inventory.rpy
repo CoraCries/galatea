@@ -13,7 +13,7 @@
 # 💡 Here we create the actual inventory! It's like giving the player a backpack.
 # Initializing the inventory system in Ren'Py. The most common approach is to initialize this variable within the Script RPY file.
 # There are two parameters in the default inventory variable: `slot_count=21` (total slots) and `unlocked_slots=7` (initial unlocked slots).  
-default inventory = Inventory(slot_count=21, unlocked_slots=7) # we just introduce the Inventory system to Renpy.
+default inventory = Inventory(slot_count=4, unlocked_slots=4) # we just introduce the Inventory system to Renpy.
 
 
 # ================================ 
