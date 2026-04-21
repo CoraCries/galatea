@@ -1635,8 +1635,10 @@ style slider_slider:
 
 #room 1 screen
 screen room():
-    #Galatea
+    #ensures inventory button is available
     use HUD
+
+    #galatea
     imagebutton:
         xanchor 0.5
         yanchor 0.5
@@ -1645,3 +1647,82 @@ screen room():
         idle "images/galatea1.png"
         hover "images/galatea2.png"
         action Jump ("galatea1")
+
+    #door
+    action Jump ("go_festival")
+
+screen festival():
+    #inventory hud
+    use HUD
+    
+    #apple vendor
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("apple_vendor")
+
+    #apple tree
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("apple_tree")
+
+    #beach
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("beach")
+
+    #home
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("home")
+
+screen temple():
+    #inventory hud
+    use HUD
+
+    #exit button
+    imagebutton:
+        xalign 0.1
+        yalign 0.9
+        #idle
+        #hover
+        action Jump ("go_festival")
+
+    #Aphrodite statue
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("aphrodite_statue")
+
+    #altar
+    imagebutton:
+        xanchor 0.5
+        yanchor 0.5
+        #xpos
+        #ypos
+        #idle
+        #hover
+        action Jump ("altar")
